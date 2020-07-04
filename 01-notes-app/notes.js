@@ -5,6 +5,10 @@ const addNote = (title, body) => {
     const notes = loadNotes()
     const duplicateNote = notes.find((note) => note.title === title)
 
+    // Debugging the app
+    // Example: node inspect app.js add --title="Courses" --body="Node.js"
+    //debugger
+
     if (!duplicateNote) {
         notes.push({
             title: title,
