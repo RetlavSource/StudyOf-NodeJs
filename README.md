@@ -1,5 +1,5 @@
 
-# Sudy of Node.Js
+# Study of Node.Js
 ![NodeJs Study Banner](./OtherFiles/nodeJs_course.jpeg)
 
 This is a study of Node.Js programming language.
