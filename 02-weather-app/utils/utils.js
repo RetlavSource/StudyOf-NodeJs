@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const keysAndTokensPath = path.join(__dirname, '../Private/keysAndTokens.json');
+const keysAndTokensPath = path.join(__dirname, '../../Private/keysAndTokens.json');
 
 /**
  * For getting ALL the private keys and tokens
