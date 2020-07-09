@@ -1,0 +1,1 @@
+console.log('Client sede javascript file is loaded!');
