@@ -32,12 +32,30 @@
 // 3. After 2 seconds are up, call the callback function with the sum
 // 4. Test your work!
 
-const add = (a, b, callback) => {
+// const add = (a, b, callback) => {
+//     setTimeout(() => {
+//         callback(a + b);
+//     }, 2000)
+// }
+
+// add(1, 4, (sum) => {
+//     console.log(sum) // Should print: 5
+// })
+
+/* ************************************************************************ */
+// CODE AFTER 8-promises.js (coded along with 8-promises.js)
+
+const doWorkCallback = (callback) => {
     setTimeout(() => {
-        callback(a + b);
+        // callback('This is my error!', undefined);
+        callback(undefined, [1, 4, 7]);
     }, 2000)
 }
 
-add(1, 4, (sum) => {
-    console.log(sum) // Should print: 5
-})
+doWorkCallback((error, result) => {
+    if (error) {
+        return console.log(error);
+    }
+
+    console.log(result);
+});
