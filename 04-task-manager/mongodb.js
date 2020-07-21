@@ -7,7 +7,7 @@ const databaseName = 'task-manager';
 
 // lesson's Server Discover and Monitoring engine option: { useNewUrlParser: true } - is the default option, so, no need to use
 // NEW Server Discover and Monitoring engine option: { useUnifiedTopology: true }
-MongoClient.connect(connectionURL, { useUnifiedTopology: true }, (error, client) => {
+MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: true }, (error, client) => {
     if (error) {
         return console.log('Unable to connect to database!');
     }
