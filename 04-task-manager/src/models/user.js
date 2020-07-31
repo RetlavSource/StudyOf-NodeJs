@@ -50,6 +50,28 @@ const userSchema = new mongoose.Schema({
     }]
 });
 
+// Method to send the only necessary user fields to the client
+// It overrides the default toJSON method for converting the user to JSON object
+// *.toJSON is used by the JSON.stringify method to enable the transformation of an object's data for JavaScript Object Notation (JSON) serialization.
+// Example:
+// const pet = {
+//     name: 'Hal'
+// }
+// pet.toJSON = function () {
+//     console.log(this);
+//     return {name: 'Milu'};
+// };
+// console.log(JSON.stringify(pet)); // prints to the console: {"name":"Milu"}
+userSchema.methods.toJSON = function () {
+    const user = this;
+    const userObject = user.toObject();
+
+    delete userObject.password;
+    delete userObject.tokens;
+
+    return userObject;
+};
+
 // Method specific to a user, not to a model, to generate a JSON Web Token
 // These methods are accessible on the instances of a Model  (instance methods)
 userSchema.methods.generateAuthToken = async function () {
