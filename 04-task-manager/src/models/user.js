@@ -49,6 +49,14 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     }]
+}, {
+    timestamps: {   // in lesson { timestamps: true }
+        currentTime: () => {    // this is to provide the correct local time
+            const tm = new Date();
+            tm.setMinutes(tm.getMinutes() - tm.getTimezoneOffset());
+            return tm;
+        }
+    }
 });
 
 // Establish a relationship from the user and their tasks

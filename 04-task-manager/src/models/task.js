@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Task = mongoose.model('Task', {
+const taskSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true,
@@ -15,6 +15,16 @@ const Task = mongoose.model('Task', {
         required: true,
         ref: 'User'
     }
-})
+}, {
+    timestamps: {   // in lesson { timestamps: true }
+        currentTime: () => {    // this is to provide the correct local time
+            const tm = new Date();
+            tm.setMinutes(tm.getMinutes() - tm.getTimezoneOffset());
+            return tm;
+        }
+    }
+});
+
+const Task = mongoose.model('Task', taskSchema);
 
 module.exports = Task;
