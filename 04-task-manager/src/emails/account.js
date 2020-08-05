@@ -1,12 +1,27 @@
 const sgMail = require('@sendgrid/mail');
 
-const sendgridAPIKey = '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';
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-sgMail.setApiKey(sendgridAPIKey);
+// sgMail returns a promise, but no need to wait. Sometime later, the user will get the email eventualy
+const sendWelcomeEmail = (email, name) => {
+    sgMail.send({
+        to: email,
+        from: 'mrbitwise@gmail.com',
+        subject: 'Thanks for joining in!',
+        text: `Welcome to the app, ${name}. Let me know how you get along with the app.`
+    });
+};
 
-sgMail.send({
-    to: 'mrbitwise@gmail.com',
-    from: 'mrbitwise@gmail.com',
-    subject: 'This is my first creation!',
-    text: 'I hope this one actualy get to you...'
-});
+const sendCancelationEmail = (email, name) => {
+    sgMail.send({
+        to: email,
+        from: 'mrbitwise@gmail.com',
+        subject: 'Sorry to see you go!',
+        text: `Goodbye, ${name}. I hope to see you back sometime soon.`
+    });
+};
+
+module.exports = {
+    sendWelcomeEmail,
+    sendCancelationEmail
+};
