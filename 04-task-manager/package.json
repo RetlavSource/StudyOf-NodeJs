@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js"
+    "dev": "env-cmd -f ./config/dev.env nodemon ./src/index.js",
+    "dev-dotenv": "nodemon -r dotenv/config ./src/index.js dotenv_config_path=./config/dev.env"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "validator": "^13.1.1"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "env-cmd": "^10.1.0",
     "nodemon": "^2.0.4"
   }
